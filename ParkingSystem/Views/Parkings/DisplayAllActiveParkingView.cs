@@ -14,18 +14,21 @@ namespace ParkingSystem.Views.Parkings
 		{
 			_parkingAppService= parkingAppService;
 		}
-		public void DisplayView()
+		public async Task DisplayView()
 		{
 			Console.WriteLine();
 			Console.WriteLine("==== All Active Parking ====");
 			Console.WriteLine();
 			Console.WriteLine("Slot - Plat Number - Type - Color");
-			var result = _parkingAppService.GetAllActiveParking().Result.OrderBy(w => w.Slot);
+			var res = await _parkingAppService.GetAllActiveParking();
+			var result = res.OrderBy(w => w.Slot);
 
-			foreach(var item in result)
+			foreach (var item in result)
 			{
 				Console.WriteLine($"{item.Slot} - {item.PlatNumber} - {item.Type} - {item.Colour}");
 			}
+			Console.WriteLine();
+			Console.WriteLine($"Total : {result.Count()}");
 		}
 	}
 }

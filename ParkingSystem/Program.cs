@@ -4,7 +4,7 @@ using ParkingSystem.Views;
 
 class Program
 {
-	static void Main(string[] args)
+	static async Task Main(string[] args)
 	{
 		Startup startup = new Startup();
 		var slotMenu = startup.Provider.GetService<SlotServiceView>();
@@ -28,15 +28,15 @@ class Program
 			switch (Console.ReadLine())
 			{
 				case "1":
-					slotMenu.DisplayView();
+					await slotMenu.DisplayView();
 					showMenu = true;
 					break;
 				case "2":
-					parkMenu.DisplayView();
+					await parkMenu.DisplayView();
 					showMenu = true;
 					break;
 				case "3":
-					reportPark.DisplayView();
+					await reportPark.DisplayView();
 					showMenu = true;
 					break;
 				case "4":

@@ -14,7 +14,7 @@ namespace ParkingSystem.Views.Parkings
 		{
 			_parkingAppService = parkingAppService;
 		}
-		public void DisplayView()
+		public async Task DisplayView()
 		{
 			Console.Clear();
 			Console.Write("Input vehicle color : ");
@@ -22,7 +22,7 @@ namespace ParkingSystem.Views.Parkings
 
 			if (input != "")
 			{
-				var result = _parkingAppService.GetSlotByVehicleColor(input).Result;
+				var result = await _parkingAppService.GetSlotByVehicleColor(input);
 
 				Console.WriteLine();
 				if (result.Count != 0)
@@ -31,6 +31,8 @@ namespace ParkingSystem.Views.Parkings
 					{
 						Console.Write($"{vehicle}, ");
 					}
+					Console.WriteLine();
+					Console.WriteLine($"Total : {result.Count}");
 				}
 				else
 				{

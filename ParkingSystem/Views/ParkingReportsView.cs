@@ -29,7 +29,7 @@ namespace ParkingSystem.Views
 			_parkingSlotByColorView = parkingSlotByColorView;
 			_searchSlotByPlatView = searchSlotByPlatView;
 		}
-		public void DisplayView()
+		public async Task DisplayView()
 		{
 			bool showMenu = true;
 			while (showMenu)
@@ -49,32 +49,32 @@ namespace ParkingSystem.Views
 				switch (Console.ReadLine())
 				{
 					case "1":
-						_allActiveParkingView.DisplayView();
+						await _allActiveParkingView.DisplayView();
 						Console.ReadKey();
 						showMenu = true;
 						break;
 					case "2":
-						_totalParkingByTypeView.DisplayView();
+						await _totalParkingByTypeView.DisplayView();
 						Console.ReadKey();
 						showMenu = true;
 						break;
 					case "3":
-						_oddEvenNumberPlatView.DisplayView();
+						await _oddEvenNumberPlatView.DisplayView();
 						Console.ReadKey();
 						showMenu = true;
 						break;
 					case "4":
-						_vehicleNumberPlatByColorView.DisplayView();
+						await _vehicleNumberPlatByColorView.DisplayView();
 						Console.ReadKey();
 						showMenu = true;
 						break;
 					case "5":
-						_parkingSlotByColorView.DisplayView();
+						await _parkingSlotByColorView.DisplayView();
 						Console.ReadKey();
 						showMenu = true;
 						break;
 					case "6":
-						_searchSlotByPlatView.DisplayView();
+						await _searchSlotByPlatView.DisplayView();
 						Console.ReadKey();
 						showMenu = true;
 						break;

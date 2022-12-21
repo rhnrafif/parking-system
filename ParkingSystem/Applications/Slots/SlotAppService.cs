@@ -74,12 +74,13 @@ namespace ParkingSystem.Applications.Slots
 		{
 			try
 			{
-				var slotData = await _context.Slots.AsNoTracking().Where(w => w.IsAvailable == true).OrderBy(w => w.Slots).ToListAsync();
+				var slotData = await _context.Slots.AsNoTracking()
+					.Where(w => w.IsAvailable == true).OrderBy(w => w.Slots).ToListAsync();
 				if(slotData.Count != 0)
 				{
 					return await Task.Run(()=>(slotData));
 				}
-				return await Task.Run(()=>(slotData = null));
+				return await Task.Run(()=>(new List<Slot>()));
 			}
 			catch
 			{
@@ -91,12 +92,13 @@ namespace ParkingSystem.Applications.Slots
 		{
 			try
 			{
-				var slotData = await _context.Slots.AsNoTracking().Where(w => w.IsAvailable == false).OrderBy(w => w.Slots).ToListAsync();
+				var slotData = await _context.Slots.AsNoTracking()
+					.Where(w => w.IsAvailable == false).OrderBy(w => w.Slots).ToListAsync();
 				if (slotData.Count != 0)
 				{
 					return await Task.Run(() => (slotData));
 				}
-				return await Task.Run(() => (slotData = null));
+				return await Task.Run(() => (new List<Slot>()));
 			}
 			catch
 			{

@@ -68,8 +68,7 @@ namespace ParkingSystem
 			services.AddTransient<OddEvenNumberPlatView>();
 			services.AddTransient<VehicleNumberPlatByColorView>();
 			services.AddTransient<ParkingSlotByColorView>();
-			services.AddTransient<SearchSlotByPlatView>();
-			
+			services.AddTransient<SearchSlotByPlatView>();			
 
 			return services.BuildServiceProvider();
 		}

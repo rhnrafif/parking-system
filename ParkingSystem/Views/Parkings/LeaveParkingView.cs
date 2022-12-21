@@ -16,7 +16,7 @@ namespace ParkingSystem.Views.Parkings
 			_parkingAppService = parkingAppService;
 		}
 
-		public void DisplayView()
+		public async Task DisplayView()
 		{
 			Console.Clear();
 			Console.WriteLine("Input the park lot number : (ex : 1) : ");
@@ -24,7 +24,7 @@ namespace ParkingSystem.Views.Parkings
 
 			if (input != 0)
 			{
-				var result = _parkingAppService.UpdateParkAvaibility(input).Result;
+				var result = await _parkingAppService.UpdateParkAvaibility(input);
 				if (result)
 				{
 					Console.WriteLine($"Slot number {input} is free");

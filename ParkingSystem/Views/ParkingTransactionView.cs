@@ -16,13 +16,14 @@ namespace ParkingSystem.Views
 			_parkingView = createParkingView;
 			_leaveParking = leaveParking;
 		}
-		public void DisplayView()
+		public async Task DisplayView()
 		{	
 			bool showMenu = true;
 			while (showMenu)
 			{
 				Console.Clear();
 				Console.WriteLine("Parking Menu");
+				Console.WriteLine("==============");
 				Console.WriteLine("1.Create Parking");
 				Console.WriteLine("2.Leave Parking");
 				Console.WriteLine("3.Exit");
@@ -31,12 +32,12 @@ namespace ParkingSystem.Views
 				switch (Console.ReadLine())
 				{
 					case "1":
-						_parkingView.DisplayView();
+						await _parkingView.DisplayView();
 						Console.ReadKey();
 						showMenu = true;
 						break;
 					case "2":
-						_leaveParking.DisplayView();
+						await _leaveParking.DisplayView();
 						Console.ReadKey();
 						showMenu = true;
 						break;

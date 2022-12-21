@@ -16,7 +16,7 @@ namespace ParkingSystem.Views.Parkings
 			_parkingAppService = parkingAppService;
 		}
 
-		public void DisplayView()
+		public async Task DisplayView()
 		{
 			Console.Clear();
 			Console.WriteLine("Input the vehicle data : (ex : B-3141-ZZZ Hitam Motor) : ");
@@ -50,7 +50,7 @@ namespace ParkingSystem.Views.Parkings
 					Colour = color
 				};
 
-				var result = _parkingAppService.CreatePark(model).Result;
+				var result = await _parkingAppService.CreatePark(model);
 				if (result == 0)
 				{
 					Console.WriteLine("Sorry, parking lot is full");

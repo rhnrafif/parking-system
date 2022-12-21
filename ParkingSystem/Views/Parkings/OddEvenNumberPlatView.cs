@@ -14,7 +14,7 @@ namespace ParkingSystem.Views.Parkings
 		{
 			_parkingAppService = parkingAppService;
 		}
-		public void DisplayView()
+		public async Task DisplayView()
 		{
 			Console.Clear();
 			Console.WriteLine("Choose the type of : ");
@@ -26,7 +26,7 @@ namespace ParkingSystem.Views.Parkings
 				return;
 			if(input == "1")
 			{
-				var result = _parkingAppService.GetOodVehicle().Result;
+				var result = await _parkingAppService.GetOodVehicle();
 				Console.WriteLine();
 				if(result.Count != 0)
 				{
@@ -34,6 +34,8 @@ namespace ParkingSystem.Views.Parkings
 					{
 						Console.Write($"{vehicle}, ");
 					}
+					Console.WriteLine();
+					Console.WriteLine($"Total : {result.Count}");
 				}
 				else
 				{
@@ -43,7 +45,7 @@ namespace ParkingSystem.Views.Parkings
 				
 			}else if(input == "2")
 			{
-				var result = _parkingAppService.GetEvenVehicle().Result;
+				var result = await _parkingAppService.GetEvenVehicle();
 				Console.WriteLine();
 				if (result.Count != 0)
 				{
@@ -51,6 +53,8 @@ namespace ParkingSystem.Views.Parkings
 					{
 						Console.Write($"{vehicle}, ");
 					}
+					Console.WriteLine();
+					Console.WriteLine($"Total : {result.Count}");
 				}
 				else
 				{

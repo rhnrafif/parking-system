@@ -18,8 +18,11 @@ namespace ParkingSystem.Views.Slots
 		{
 			Console.Clear();
 
-			Console.WriteLine("How many slots do you want to create ?");
+			Console.WriteLine("How many slots do you want to create ? (press 0 to exit)");
 			int input = int.Parse(Console.ReadLine());
+
+			if (input == 0)
+				return;
 
 			var result = await _slotAppService.CreateSlot(input);
 

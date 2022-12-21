@@ -14,7 +14,7 @@ namespace ParkingSystem.Views.Parkings
 		{
 			_parkingAppService = parkingAppService;
 		}
-		public void DisplayView()
+		public async Task DisplayView()
 		{
 			Console.Clear();
 			Console.Write("Input the plat number : (ex : B-1987-YHU) : ");
@@ -28,7 +28,7 @@ namespace ParkingSystem.Views.Parkings
 				return;
 			}
 
-			var result = _parkingAppService.GetSlotByVehicleNumber(input).Result;
+			var result = await _parkingAppService.GetSlotByVehicleNumber(input);
 			if(result != 0)
 				Console.WriteLine($"Parking lot : {result}");
 			else

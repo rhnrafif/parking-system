@@ -18,13 +18,14 @@ namespace ParkingSystem.Views
 			_showAvailabelSlotView = showAvailabelSlotView;
 		}
 
-		public void DisplayView()
+		public async Task DisplayView()
 		{
 			bool showMenu = true;
 			while (showMenu)
 			{
 				Console.Clear();
 				Console.WriteLine("Parking Slot Menu");
+				Console.WriteLine("=================");
 				Console.WriteLine("1.Create Slot");
 				Console.WriteLine("2.Show Available Slot");
 				Console.WriteLine("3.Show Filled Slot");
@@ -34,17 +35,17 @@ namespace ParkingSystem.Views
 				switch (Console.ReadLine())
 				{
 					case "1":
-						_view.DisplayView();
+						await _view.DisplayView();
 						Console.ReadKey();
 						showMenu = true;
 						break;
 					case "2":
-						_showAvailabelSlotView.DisplayAvailableView();
+						await _showAvailabelSlotView.DisplayAvailableView();
 						Console.ReadKey();
 						showMenu = true;
 						break;
 					case "3":
-						_showAvailabelSlotView.DisplayUnavailableView();
+						await _showAvailabelSlotView.DisplayUnavailableView();
 						Console.ReadKey();
 						showMenu = true;
 						break;

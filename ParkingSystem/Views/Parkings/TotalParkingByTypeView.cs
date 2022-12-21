@@ -14,7 +14,7 @@ namespace ParkingSystem.Views.Parkings
 		{
 			_parkingAppService = parkingAppService;
 		}
-		public void DisplayView()
+		public async Task DisplayView()
 		{
 			Console.Clear();
 			Console.WriteLine();
@@ -26,7 +26,7 @@ namespace ParkingSystem.Views.Parkings
 			{
 				if(input == "mobil")
 				{
-					var result = _parkingAppService.GetVehicleByType(input).Result;
+					var result = await _parkingAppService.GetVehicleByType(input);
 					if(result.Count != 0)
 						Console.WriteLine($"Total for mobil is {result.Count}");
 					else
@@ -34,7 +34,7 @@ namespace ParkingSystem.Views.Parkings
 				}
 				else if(input == "motor")
 				{
-					var result = _parkingAppService.GetVehicleByType(input).Result;
+					var result = await _parkingAppService.GetVehicleByType(input);
 					if (result.Count != 0)
 						Console.WriteLine($"Total for motor is {result.Count}");
 					else 

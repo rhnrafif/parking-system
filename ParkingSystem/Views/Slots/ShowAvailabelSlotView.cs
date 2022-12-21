@@ -14,32 +14,33 @@ namespace ParkingSystem.Views.Slots
 		{
 			_slotAppService = slotAppService;
 		}
-		public void DisplayAvailableView()
+		public async Task DisplayAvailableView()
 		{
 			Console.Clear();
 			Console.WriteLine("Available Parking Slot");
 			Console.WriteLine("======================");
 
-			var result = _slotAppService.DisplayAvailableSlot().Result;
+			var result = await _slotAppService.DisplayAvailableSlot();
 			if(result.Count != 0)
 			{
 				foreach(var slot in result)
 				{
 					Console.WriteLine($" Lot {slot.Slots}");
 				}
+				Console.WriteLine($"Total : {result.Count}");
 			}
 			else
 			{
 				Console.WriteLine("Lot are full");
 			}
 		}
-		public void DisplayUnavailableView()
+		public async Task DisplayUnavailableView()
 		{
 			Console.Clear();
 			Console.WriteLine("Parking lot Filled");
 			Console.WriteLine("======================");
 
-			var result = _slotAppService.DisplayUnavailableSlot().Result;
+			var result = await _slotAppService.DisplayUnavailableSlot();
 			if (result.Count != 0)
 			{
 				foreach (var slot in result)
@@ -49,7 +50,7 @@ namespace ParkingSystem.Views.Slots
 			}
 			else
 			{
-				Console.WriteLine("Lot are full");
+				Console.WriteLine("All slot is available");
 			}
 		}
 	}
